@@ -10,10 +10,13 @@
     <title>@yield('title','LaraBBS')</title>
 
     <!-- Styles -->
+    {{--asset('css/app.css') 使用当前请求的协议（ HTTP 或 HTTPS ）为资源文件生成一个 URL，以我们的情况，
+    会生成 http://larabbs.test/css/app.css--}}
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 
 <body>
+{{--route_class()会将当前请求的路由名称转换为 CSS 类名称，作用是允许我们针对某个页面做页面样式定制--}}
     <div id="app" class="{{ route_class() }}-page">
 
         @include('layouts._header')
