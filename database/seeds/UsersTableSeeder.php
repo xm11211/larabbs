@@ -36,6 +36,14 @@ class UsersTableSeeder extends Seeder
                 $user->avatar = $faker->randomElement($avatars);
             });
 
+        // 生成数据集合
+//        $users = factory(User::class, 100)
+//            ->create()
+//            ->each(function ($user) use ($faker, $avatars){
+//                $user->avatar = $faker->randomElement($avatars);
+//                $user->save();
+//         });
+
         // 让隐藏字段可见，并将数据集合转换为数组
         $user_array = $users->makeVisible(['password', 'remember_token'])->toArray();
 
