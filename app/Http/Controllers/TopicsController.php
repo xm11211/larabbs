@@ -9,6 +9,7 @@ use App\Http\Requests\TopicRequest;
 use App\Models\Category;
 use Auth;
 use App\Handlers\ImageUploadHandler;
+use Illuminate\Auth\Access\AuthorizationException;
 
 class TopicsController extends Controller
 {
@@ -46,15 +47,23 @@ class TopicsController extends Controller
 
 	public function edit(Topic $topic)
 	{
-        $this->authorize('update', $topic);
-		return view('topics.create_and_edit', compact('topic'));
+        try {
+            $this->authorize('update', $topic);
+        } catch (AuthorizationException $e) {
+            return abort(403, '无权访问');
+        }
+        $categories = Category::all();
+		return view('topics.create_and_edit', compact('topic','categories'));
 	}
 
 	public function update(TopicRequest $request, Topic $topic)
 	{
-		$this->authorize('update', $topic);
+        try {
+            $this->authorize('update', $topic);
+        } catch (AuthorizationException $e) {
+            return abort(403, '无权访问');
+        }
 		$topic->update($request->all());
-
 		return redirect()->route('topics.show', $topic->id)->with('success', '更新成功！');
 	}
 

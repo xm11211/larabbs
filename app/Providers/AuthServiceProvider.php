@@ -15,8 +15,8 @@ class AuthServiceProvider extends ServiceProvider
 
     //对授权策略进行注册
     protected $policies = [
-		 \App\Models\Topic::class => \App\Policies\TopicPolicy::class,
         'App\Model' => 'App\Policies\ModelPolicy',
+		 \App\Models\Topic::class => \App\Policies\TopicPolicy::class,
         \App\Models\User::class  => \App\Policies\UserPolicy::class,
     ];
 
