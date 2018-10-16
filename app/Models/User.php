@@ -30,4 +30,10 @@ class User extends Authenticatable
     public function topics() {
         return $this->hasMany(Topic::class);
     }
+
+    //用于用户修改和删除话题的授权策略
+    public function isAuthorOf($model)
+    {
+        return $this->id == $model->user_id;
+    }
 }
