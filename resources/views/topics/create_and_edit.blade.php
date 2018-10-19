@@ -72,7 +72,8 @@
                 textarea: $('#editor'),
                 upload: {
                     url: '{{ route('topics.upload_image') }}',
-                    params: { _token: '{{ csrf_token() }}' }, //Laravel 的 POST 请求必须带防止 CSRF 跨站请求伪造的 _token 参数
+                    //Laravel 的 POST 请求必须带防止 CSRF 跨站请求伪造的 _token 参数
+                    params: { _token: '{{ csrf_token() }}' },
                     fileKey: 'upload_file', //服务器端获取图片的键值
                     connectionCount: 3, //最多只能同时上传 3 张图片
                     leaveConfirm: '文件上传中，关闭此页面将取消上传。'
