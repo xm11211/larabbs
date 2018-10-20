@@ -24,3 +24,5 @@
 
 {{-- 分页 --}}
 {!! $replies->appends(Request::except('page'))->render() !!}
+{{--{!! $replies->appends(['tab' => 'replies'])->links() !!}--}}
+{{--{!! $replies->appends(['tab' => 'replies'])->rander() !!}--}}
