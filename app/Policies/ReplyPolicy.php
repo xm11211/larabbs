@@ -15,6 +15,7 @@ class ReplyPolicy extends Policy
 
     public function destroy(User $user, Reply $reply)
     {
-        return true;
+        //回复的拥有这和话题的拥有者都可以删除回复
+        return $user->isAuthorOf($reply) || $user->isAuthorOf($reply->topic);
     }
 }
