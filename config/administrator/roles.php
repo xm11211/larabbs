@@ -28,7 +28,10 @@ return [
                     $result[] = $permission->name;
                 }
 
+//                $permissions = $model->permissions->pluck('name');
+
                 return empty($result) ? 'N/A' : implode($result, ' | ');
+//                return empty($permissions) ? 'N/A' : $permissions->implode(' | ');
             },
             'sortable' => false,
         ],
