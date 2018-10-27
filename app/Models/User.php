@@ -13,6 +13,7 @@ class User extends Authenticatable
     use Notifiable {
         notify as protected laravelNotify;
     }
+    use Traits\ActiveUserHelper;
 
     //生成消息通知
     public function notify($instance)

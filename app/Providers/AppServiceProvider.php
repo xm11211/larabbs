@@ -27,6 +27,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        //.env文件中的环境常量APP_ENV=local，要注意的是yaml配置文件如果也有该常量会以yaml文件为准
+        //判断是否是本地环境
         if (app()->isLocal()) {
             $this->app->register(\VIACreative\SudoSu\ServiceProvider::class);
         }
