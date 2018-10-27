@@ -11,4 +11,9 @@ class LinkObserver
     {
         Cache::forget($link->cache_key);
     }
+
+    public function deleted(Link $link)
+    {
+        $this->saved($link);
+    }
 }
